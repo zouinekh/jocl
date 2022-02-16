@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lateef&family=Noto+Kufi+Arabic&family=Scheherazade+New&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<div class="card place" style="text-align: right">
+  <h1 style="text-align: 'center'" [style]="style"> <i *ngIf="user.type==='مدرج'&& decis.cor===true" class="fas fa-times-circle"></i><i *ngIf="user.type==='مصادق'&& decis.statue===true" class="fas fa-check-circle" style="color:green"></i> &nbsp; {{ this.decis.id }} : قرار رقم</h1>
+
+
+  <details class="warning">
+    <summary style="text-align: right">مدرج من قبل</summary>
+    <p>{{decis.user.id }} : مدرج رقم</p>
+    <p>{{ this.decis.user.add }} : الأسم</p>
+    <p>بلدية : {{ this.decis.user.from }}</p>
+  </details>
+
+  <details class="info" open>
+    <summary style="text-align: right">موضوع النشر</summary>
+    <p>{{ this.decis.textTitre }} : عنوان النص</p>
+    <p>{{ this.decis.Btext }} : سنة النص</p>
+    <p>نوع النص : {{ this.decis.typeText }}</p>
+    <p>صيغة النص :{{ this.decis.Stext }}</p>
+    <p>{{ this.decis.Name }} : الممضي</p>
+    <p>{{ this.decis.date }} : تاريخ الأمضاء</p>
+  </details>
+
+  <details class="alert">
+    <summary style="text-align: right">نص القرار</summary>
+    <p>{{ this.decis.text }} : النص</p>
+  </details>
+  <details class="alert">
+    <summary style="text-align: right">وثائق المطلوبة</summary>
+    <p>
+      <a>{{ this.decis.file }}</a>
+    </p>
+  </details>
+
+  <div class="col">
+    <button
+      type="button"
+      *ngIf="user.type === 'مصادق' && decis.statue===false"
+      (click)="cor(this.decis)"
+      class="btn btn-danger"
+      style="width: 187px; border-radius: 9px; margin-right: 327px"
+      [routerLink]="['/decision']" 
+    >
+      للأصلاح
+    </button>
+  </div>
+  <div class="col" *ngIf="user.type === 'مصادق'&& decis.statue===false">
+    <button
+      type="button"
+      (click)="change(this.decis)"
+      class="btn btn-success"
+      style="
+        width: 187px;
+        border-radius: 9px;
+        margin-right: 74px;
+        margin-top: -60px;
+      "
+      [routerLink]="['/decision']" 
+    >
+      مصادقة
+    </button>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<app-header></app-header>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lateef&family=Noto+Kufi+Arabic&family=Scheherazade+New&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500&display=swap" rel="stylesheet">
+</head>
+<form [formGroup]="formValue">
+  <div class="col-6 offset-3 d-block place">
+    <div class="card box">
+      <div class="card-header head">
+        <br>
+        <br>
+      </div>
+      <p
+        style="font-family: 'Scheherazade New', serif;font-size:20px; text-align: right; margin-right: 25px; margin-top: 20px;">
+        <strong>: طلب النشر</strong>
+      </p>
+
+
+      <div class="card-body needs-validation">
+        <p style="text-align: right;font-family: 'Scheherazade New', serif; font-size: 15px;">بلدية : {{ from }}</p>
+
+        <p style="font-family: 'Scheherazade New', serif; margin-left: 50px;">
+          {{ add }} : مدرج من قبل <br />
+        </p>
+        <p style=" margin-left: 50px;font-family: 'Scheherazade New', serif; font-size: 15px;"> {{ date }} : بتاريخ</p>
+      </div>
+      <hr>
+      <div class="place">
+        <p style="font-family: 'Scheherazade New', serif;font-size:20px;text-align: right; margin-right: 25px;">
+          <strong> : موضوع النشر</strong>
+        </p>
+      </div>
+      <table class="text input-group has-validation" style="font-family: 'Scheherazade New', serif">
+        <tr>
+          <td>
+            <input formControlName="Btext" type="text" class="form__field col-md-4" name=""
+              aria-describedby="inputGroupPrepend" id="validationCustomUsername" required style="text-align: right;
+                font-size: 15px;
+                margin-top: 12px;" [style]="style" /> : سنة النص
+            <br><span style="color: red;">{{x}}</span>
+            &nbsp;&nbsp;
+
+          </td>
+          <td>
+            <input type="text" formControlName="textTitre" class="form__field col-md-4" name="" id=""
+              style="text-align: right; font-size: 15px;" [style]="style" required />
+            : عنوان النص
+            <br><span style="color: red;">{{x}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="place">
+            <label for="exampleSelect1" style="text-align: right; font-size: 15px; margin-left: -16px;"
+              class="form-label mt-4"> : صيغة النص</label>
+            <select formControlName="Stext" class="form-select" id="exampleSelect1">
+              <option *ngFor="let item of liste" style="text-align: center;" >{{item}}</option>
+            </select>
+            <span style="color: red; text-align: center;">{{x}}</span>
+          </td>
+          <td class="place" style="padding-left: 42px;">
+            <label for="exampleSelect1" [style]="style" style="text-align: right; font-size: 15px; margin-left: -16px;"
+              class="form-label mt-4"> : نوع النص
+            </label>
+            <select formControlName="typeText"  (click)="select()"  class="form-select" id="exampleSelect1">
+              <option style="text-align: center;">قرار</option>
+              <option style="text-align: center;">رأي</option>
+              <option style="text-align: center;">مدولات</option>
+              <option style="text-align: center;">تقرير</option>
+            </select>
+
+            <span style="color: red; text-align: center;">{{x}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="place">
+            <input type="date" formControlName="date" id="start" name="trip-start" min="2022-01-01"
+              style="text-align: right; font-size: 15px; " [style]="style" required />
+            : تاريخ الأمضاء
+            <span style="color: red;padding-left: 29px;">{{x}}</span>
+          </td>
+          <td class="place">
+
+            <input type="text" required formControlName="Name" class="form__field col-md-4 inputr" name="" id=""
+              style="text-align: right; font-size: 15px; " required [style]="style" />
+            : الممضي
+            <span style="color: red; text-align: center;">{{x}}</span>
+          </td>
+        </tr>
+      </table>
+      <br><br>
+      <hr>
+      <div class="col-6 offset-3 d-block place">
+        <div class="placet" class="text" style="font-family: 'Scheherazade New', serif">
+          <p for="validationCustomUsername" style="text-align: right;   font-size: 20px;  margin-right: -128px;">
+            <strong>: نص القرار </strong></p>
+        </div>
+
+        <div class="placet validate-input">
+          <p
+            style="font-family: 'Scheherazade New', serif;font-size:18px; text-align: right; margin-right: -105px; margin-top: 5px; ">
+            :النص</p>
+          <textarea formControlName="text" class="input100 wrap-input100 inputr" name="" id="" cols="30" rows="10"
+            required [placeholder]=x></textarea>
+
+        </div>
+      </div>
+      <hr>
+      <div class="col-6 offset-3 d-block place">
+        <div class="placet">
+          <p class="text"
+            style="text-align: right; font-family: 'Scheherazade New', serif;  font-size: 20px;  margin-right: -128px;">
+            <strong>وثائق المطلوبة </strong>
+
+            <br><br>
+
+
+          <p class="lead"
+            style="text-align: right;  font-family: 'El Messiri', sans-serif;  margin-right: -128px ;color:#4A0404">
+          </p>
+          <div class="alert alert-dismissible alert-danger" style="    margin-right: -147px;
+        margin-left: -131px;
+        padding-left: 138px;">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong
+              style="text-align: right;  font-family: 'El Messiri', sans-serif;font-size: 20px;    margin-left: 335px;  margin-right: -128px;">:ملاحظة</strong><br>
+            <a href="" class="alert-link" style="margin-left: 188px ; color: black;"> PDF</a> الوثائق الملحقة يجب أن
+            تكون على شكل
+          </div>
+          <input class="form-control placef" style="font-family: 'Scheherazade New', serif" type="file" id="formFile"
+            formControlName="file" required [style]="style" />
+          <span style="color: red; text-align: center; margin-left: 98px;">{{x}}</span>
+
+        </div>
+      </div>
+      <hr>
+      <div class="col-6 offset-3 d-block place">
+        <div class="placeb" style="
+        padding-right: -64px;
+        margin-left: -49px;">
+            <button  type="reset" style="font-family: 'Noto Kufi Arabic', sans-serif; margin-left: 31px; width: 200px;"
+              class="btn btn-danger">
+              ألغاء
+
+            </button>
+            <button type="button " (click)="postdecisiondetails()" style="margin-top: -59px;margin-left: 243px;font-family: 'Noto Kufi Arabic', sans-serif;width: 200px;" class="btn btn-success">
+              أدراج القرار
+
+            </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

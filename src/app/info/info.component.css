@@ -1,0 +1,163 @@
+/*
+ Native <details> element styling
+ AUTHOR: https://codepen.io/nicolasjengler 
+ + replaced list-item styling with flex and pseudo-element content on summary => vertically aligned sign with summary content
+ + added selection and focus outline matching detail style
+ + addede custom list-style-type
+ - corona-warning  
+ - corona-info
+ - corona-alert
+ + fix body hehight –> min-height: 
+ allow scroll on all details opened
+ */
+ @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
+ :root {
+   --color-bg: #eeedeb;
+   --color-title: #0e1c4e;
+   --color-summary-1: #fff6ee;
+   --color-summary-1-highlight: #ffc48b;
+   --color-summary-2: #fafaff;
+   --color-summary-2-highlight: #b4b3ff;
+   --color-summary-3: #fff0f3;
+   --color-summary-3-highlight: #ffb3c0;
+   --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
+ }
+
+ .card {
+  background: #f8f6f6;
+    padding: 38px 31px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    margin-left: 343px;
+    border-radius: 34px;
+    background: linear-gradient(45deg, #dfdada, #ffffff);
+    box-shadow: 10px -10px 33px #dfdada,
+                 -20px 20px 33px #ffffff;
+    max-width: 48em;
+    width: 100%;
+ }
+ .place{
+  padding-top: 70px;
+
+}
+ .card h1 {
+   font-family:'Scheherazade New';
+   font-style: normal;
+   font-weight: bold;
+   font-size: 20px;
+   line-height: 1.2;
+   color: var(--color-title);
+   margin-bottom: 20px;
+ }
+ .card details {
+   display: flex;
+   border-radius: 5px;
+   font-family: 'El Messiri', sans-serif;
+   overflow: hidden;
+   background: rgb(187, 41, 41);
+   border-left: 15px solid gray;
+   padding: 15px;
+ }
+ .card details {
+   margin-top: 15px;
+ }
+ .card details.warning {
+   --highlight: var(--color-summary-2-highlight);
+   background: var(--color-summary-1);
+   border-left-color: var(--color-summary-1-highlight);
+ }
+ .card details.warning p {
+   list-style-type: corona-warning;
+ }
+ .card details.info {
+   --highlight: var(--color-summary-2-highlight);
+   background: var(--color-summary-2);
+   border-left-color: var(--color-summary-2-highlight);
+ }
+ .card details.info p {
+   list-style-type: corona-info;
+ }
+ .card details.alert {
+   --highlight: var(--color-summary-3-highlight);
+   background: var(--color-summary-3);
+   border-left-color: var(--highlight);
+ }
+ .card details.alert p {
+   list-style-type: corona-alert;
+ }
+ .card details.alerts {
+  --highlight: var(--color-summary-3-highlight);
+  background: var(--color-summary-3);
+  border-left-color: var(--highlight);
+}
+.card details.alerts p {
+  list-style-type: corona-alerts;
+}
+ .card details summary, .card details p {
+   flex-direction: row;
+   align-content: center;
+   justify-content: flex-start;
+   font-family: var(--font-ibm-plex-sans);
+   font-style: normal;
+   font-weight: normal;
+   font-size: 18px;
+   color: var(--color-title);
+   padding: 20px;
+   cursor: pointer;
+ }
+ .card details summary::-webkit-details-marker, .card details p::-webkit-details-marker {
+   display: none;
+ }
+ .card details summary:focus, .card details p:focus {
+   outline: solid 3px var(--highlight);
+ }
+ .card details summary::selection, .card details p::selection {
+   background-color: var(--highlight);
+ }
+ .card details p {
+   display: list-item;
+   cursor: default;
+   margin-left: 3rem;
+   list-style-type: corona;
+ }
+ .card details summary::before {
+   cursor: pointer;
+   position: absolute;
+   display: inline-flex;
+   width: 1rem;
+   height: 1rem;
+   left: 0rem;
+   margin-right: 0.5rem;
+   content: url("data:image/svg+xml,%3Csvg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.6066 12H1.3934' stroke='%23202842' stroke-width='1.875' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 1.39343V22.6066' stroke='%23202842' stroke-width='1.875' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+ }
+ .card details[open] summary {
+   font-weight: 700;
+ }
+ .card details[open] summary::before {
+   transform: rotate(45deg);
+   content: url("data:image/svg+xml,%3Csvg width='100%' height='100%' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.6066 12H1.3934' stroke='%23202842' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 1.39343V22.6066' stroke='%23202842' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+ }
+ .card details  summary:hover{
+   color:#3d78c5ec;
+   text-decoration: underline black solid;
+ }
+ @counter-style corona-warning {
+   system: cyclic;
+   symbols: 📝 💳  🏛;
+   suffix: " ";
+ }
+ @counter-style corona-info {
+   system: cyclic;
+   symbols: 📌 ✏️ 📑 📖 ✒️ 📅;
+   suffix: " ";
+ }
+ @counter-style corona-alert {
+   system: fixed;
+   symbols: 📜 ;
+   suffix: " ";
+ }
+ @counter-style corona-alerts {
+  system: fixed;
+  symbols: 📂;
+  suffix: " ";
+}

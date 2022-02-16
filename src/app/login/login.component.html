@@ -1,0 +1,23 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../assets/Coat_of_arms_of_Tunisia.svg.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input type="text" required="champ obligatoire" formControlName="adress" id="login"style="width: 80%;" class="fadeIn second" name="login" placeholder="اسم المستخدم">
+        <input type="password" required formControlName="mdp" id="password" style="width: 80%;" class="fadeIn third" name="login" placeholder="الرمز السري">
+        <input type="submit"  [disabled]="!loginForm.valid"  class="fadeIn fourth" value=" الدخول">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" >Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>

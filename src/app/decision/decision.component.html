@@ -1,0 +1,43 @@
+<app-header></app-header>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lateef&family=Noto+Kufi+Arabic&family=Scheherazade+New&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="container" >
+  <h2  style="font-family: 'Scheherazade New', serif;" > <strong>القرارات المدرجة </strong><small></small></h2>
+  <ul class="responsive-table">
+    <li class="table-header" style="font-family: 'Scheherazade New', serif">
+      <div class="col " *ngIf="user.type==='مصادق'"> <strong>   </strong></div>
+      <div class="col "*ngIf="user.type==='مصادق'"> <strong>   </strong></div>
+      <div class="col "> <strong> المزيد من المعلومات</strong></div>
+      <div class="col "> <strong>صيغةالنص</strong></div>
+      <div class="col "><strong>نوع النص</strong> </div>
+      <div class="col " ><strong> تاريخ الأمضاء</strong></div>
+      <div class="col "> <strong>أسم البلدية</strong></div>
+    </li>
+
+
+
+
+    <div *ngFor="let item of decision"> 
+      <form  >
+      <li class="table-row" *ngIf="(item.mod===user.add||item.from===user.from)&& (item.statue===false&&item.cor===false)">
+        <div class="col " *ngIf="user.type==='مصادق'"><button type="button" (click)="cor(item)" class="btn btn-danger">للأصلاح</button></div>
+        <div class="col "*ngIf="user.type==='مصادق'" ><button type="button" (click)="change(item)" class="btn btn-success">مصادقة</button></div>
+        <div class="col " ><i type="submit" (click)="storage(item)"    [routerLink]="['/info']" class="fas fa-info-circle info fa-2x" ></i></div>
+        <div class="col " >{{item.Stext}}</div>
+        <div class="col " >{{item.typeText}} </div>
+        <div class="col " >{{item.date}}</div>
+        <div class="col " >{{user.from}}</div>
+   
+      </li>
+    </form>
+    </div>
+    
+  </ul>
+</div>

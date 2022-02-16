@@ -1,0 +1,42 @@
+body {
+    font-family: "lato", sans-serif;
+  }
+  .container {
+    max-width: 928px;
+    margin-left: 222px;
+    margin-right: 282px;
+    padding-left: 34px;
+    padding-right: -1px
+  }
+  h2 {
+    font-size: 26px;
+    margin: 50px 0;
+    text-align: center;
+  }
+
+  .responsive-table li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    text-align: right;
+    display: flex;
+    margin-bottom: 25px;
+  }
+  .responsive-table .table-header {
+    background-color: #0000005d;
+      width: 100%;
+  }
+
+  .responsive-table .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.247);
+  }
+
+i:hover{
+  color: blue
+}
+.info{
+
+  margin-left: 50%;
+  margin-right: 50%;
+}
+  
